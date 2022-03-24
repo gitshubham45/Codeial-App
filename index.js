@@ -5,6 +5,8 @@ const port=8000;
 
 const expressLayouts = require('express-ejs-layouts');
 
+const db=require('./config/mongoose.js');
+
 app.use(expressLayouts)
 
 //extrxt style and script froom the sub-pages into the layouts
