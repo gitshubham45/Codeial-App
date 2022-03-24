@@ -1,3 +1,5 @@
 module.exports.post = function(req,res){
-    return res.end('<h1>Post used</h1>');
+    return res.render('user_profile',{
+        title:"profile"
+    });
 }
