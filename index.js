@@ -7,6 +7,10 @@ const expressLayouts = require('express-ejs-layouts');
 
 app.use(expressLayouts)
 
+//extrxt style and script froom the sub-pages into the layouts
+app.set('layout extractStyles',true);
+app.set('layout extractScripts',true);
+
 //use express router
 app.use('/',require('./routes'));
 app.use(express.static('./assets'))
