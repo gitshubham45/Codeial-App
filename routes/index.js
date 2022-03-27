@@ -8,6 +8,7 @@ console.log('router loaded');
 router.get('/',homeController.home);
 router.use('/users',require('./users'));
 router.use('/post',require('./post'));
+
 //only upper controller used
 // router.get('/',homeController.actionName);
 
