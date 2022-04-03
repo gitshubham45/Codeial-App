@@ -1,6 +1,7 @@
 //express setup
+const bodyParser=require('body-parser');
 const express=require('express');
-const app=express();
+const app=express();        
 
 const cookieParser =require('cookie-parser');
 const port=8000;
@@ -16,6 +17,12 @@ const passportLocal = require('./config/passport-local-strategy');
 const  MongoStore =  require('connect-mongo')(session);
 const sassMiddleware = require('node-sass-middleware');
 
+//app.use(express.urlencoded());
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({
+    extended:false,
+}));
+
 app.use(sassMiddleware({
     src:'./assets/scss',
     dest:'./assets/css',
@@ -24,8 +31,7 @@ app.use(sassMiddleware({
     prefix:'/css'
 
 }));
-app.use(express.urlencoded());
-app.use(cookieParser());
+
 
 
 app.use(expressLayouts)
