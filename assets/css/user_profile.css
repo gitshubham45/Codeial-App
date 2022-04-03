@@ -1,3 +1,7 @@
-body{
-    background-color: rgb(7, 156, 206);
-}
+body {
+  align-items: center;
+  text-align: center;
+  background-color: #00506b;
+  color: black;
+  color: aliceblue;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; }

@@ -1,3 +1,32 @@
-<header>
-    Page header
+<style>
+    a{
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+    }
+    .box{
+        background-image: linear-gradient(to right,rgb(255, 200, 118),rgb(104, 238, 104));
+    }
+</style>
+
+<header class="box" style="padding:2px;display: flex;justify-content: space-between;background-color: rgb(103, 187, 255);">
+
+    <h1 style="color: rgb(0, 0, 0);"><a href="/">CODIAL</a></h1>
+
+    <div  style="width:15vw;display: flex; justify-content: space-between; margin-top: 2%;padding: 3px; ">
+        <% if (locals.user){%>
+                <div  >
+                    <a href="/users/profile"><%=user.name%></a>
+                </div>
+                <div >
+                    <a href="/users/sign-out">Sign Out</a>
+                </div>
+        <%}else{%>
+            <div >
+                <a href="/users/sign-in">Sign In</a>
+            </div>
+            <div >
+                <a href="/users/sign-up">Sign Up</a>
+            </div>
+        <%}%>
+     </div>
 </header>
