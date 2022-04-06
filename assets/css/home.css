@@ -1,3 +1,55 @@
 body {
   background-color: #00506b;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; }
+  height: 75vh;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  overflow-y: scroll; }
+
+.main {
+  margin-top: 0.5%;
+  display: flex;
+  justify-content: space-around;
+  /*scrollbar invisible*/
+  height: 100%;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  /*left aside*/
+  /*feed section*/
+  /*right aside*/ }
+  .main ::-webkit-scrollbar {
+    display: none; }
+  .main .app-left {
+    width: 24%;
+    height: 100%;
+    background-color: #00ad88;
+    border-radius: 8px; }
+  .main #feed-post {
+    width: 49%;
+    height: 100%;
+    border-radius: 8px;
+    background-color: #15acc7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black; }
+    .main #feed-post .post-heading {
+      height: 10%;
+      width: 98%;
+      background-color: #dae0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 4px; }
+    .main #feed-post .scrollable {
+      height: 86%;
+      width: 98%;
+      margin-top: 1%;
+      overflow: scroll;
+      background-color: #dae0e0;
+      border-radius: 4px; }
+  .main .app-right {
+    width: 24%;
+    height: 100%;
+    background-color: #00ad88;
+    border-radius: 8px; }
