@@ -12,7 +12,9 @@
         <div class="app-left"></div>
 
         <div id="feed-post">
-                <div class="post-heading"><h2>Posts</h2></div>
+                <div class="post-heading">
+                        <h2>Posts</h2>
+                </div>
                 <div class="scrollable">
                         <%if(locals.user){%>
                                 <form action="/posts/create" id="new-post-form" method="POST">
@@ -25,61 +27,37 @@
                                         <div id="post-list-container">
                                                 <ul>
                                                         <%for(post of posts){%>
-                                                                <li>
-
-                                                                        <p>
-                                                                                <%if(locals.user && locals.user.id==post.user.id){%>
-                                                                                <small>
-                                                                                        <a href="/posts/destroy/<%=post.id%>">DELETE</a>
-                                                                                </small>
-                                                                                <%}%>
-                                                                                <%=post.content%>
-
-                                                                                        <br>
-
-                                                                                        <small>
-                                                                                                <%=post.user.name%>
-                                                                                        </small>
-                                                                        </p>
-                                                                        <div class="post-comments">
-                                                                                <%if(locals.user){%>
-                                                                                        <form action="/comments/create"
-                                                                                                method="POST">
-                                                                                                <input type="text"
-                                                                                                        name="content"
-                                                                                                        placeholder="Type here to add comment..."
-                                                                                                        required="true">
-                                                                                                <input type="hidden"
-                                                                                                        name="post"
-                                                                                                        value="<%=post._id%>">
-                                                                                                <input type="submit"
-                                                                                                        value="Add Comment">
-                                                                                        </form>
-                                                                                        <%}%>
-                                                                        </div>
-
-                                                                        <div class="post-comments-list">
-                                                                                <ul id="post-comments-<%=post._id%>">
-                                                                                        <%for(comment of
-                                                                                                post.comments){%>
-                                                                                                <p>
-                                                                                                        <%=comment.content%>
-                                                                                                                <br>
-                                                                                                                <small>
-                                                                                                                        <%=comment.user.name%>
-                                                                                                                </small>
-                                                                                                </p>
-                                                                                                <%}%>
-                                                                                </ul>
-                                                                        </div>
-
-                                                                </li>
+                                                               <%-include('_post')-%>
 
                                                                 <%}%>
                                                 </ul>
                                         </div>
                 </div>
         </div>
-        <div class="app-right"></div>
+        
+
+         <div class="app-right" id="user-friends">
+                        <div class="friends-list-heading">
+                                <h2>Friends</h2>
+                        </div>
+
+                        
+                        <div class="list">
+
+                                <%for (u of all_users){%>
+                                        <div class="friends">
+                                                <p>
+                                                        <a href="/users/profile/<%=u.id%>"><%=u.name%></a>
+                                                </p>
+                                        </div>
+                                        
+                                <%}%>
+
+                        </div>
+                       
+                </div>
+
+        
 
 </div>
+

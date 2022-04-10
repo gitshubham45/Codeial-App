@@ -1,0 +1,16 @@
+footer {
+  bottom: 1px;
+  width: 100vw;
+  align-content: center;
+  flex-wrap: nowrap; }
+
+.footer-box {
+  height: 10vh;
+  width: auto;
+  color: white; }
+  .footer-box .inner-div {
+    display: inline; }
+
+.links a {
+  text-decoration: none;
+  background-color: white; }

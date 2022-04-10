@@ -4,9 +4,27 @@ const User=require('../models/user')
 //profile page
 
 module.exports.profile = function(req, res){
-    return res.render('user_profile', {
-        title: 'User Profile'
+
+    User.findById(req.params.id,function(err,user){
+        return res.render('user_profile', {
+            title: 'User Profile',
+            profile_user:user
+        });
     })
+
+    
+}
+
+module.exports.update = function(req,res){
+    if(req.user.id==req.params.id){
+       // User.findByIdAndUpdate(req.params.id,{name:req.body.name,email:req.body.email})
+        User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
+            return res.redirect('back');
+        });
+    }
+    else {
+        return res.status(401).send('Unauthorized');
+    }
 }
 // module.exports.profile = function(req,res){
 //     if(req.cookies.user_id){
@@ -89,7 +107,10 @@ module.exports.create = function(req,res){
 
 //for creating session
 module.exports.createSession=function(req,res){
-    return res.redirect('/users/profile');
+    req.flash('success','Logged in succesfully');
+
+    return res.redirect('/');
+    //return res.redirect("/users/profile/"+req.user.id)
 }
 
 //for creating session after signing in
@@ -133,7 +154,10 @@ module.exports.createSession=function(req,res){
 
 //creatinig controller for signing out
 module.exports.destroySession = function(req,res){
+
+
     req.logout();
+    req.flash('success','You have logged out');
    
     return res.redirect('/');
 }
