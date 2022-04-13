@@ -16,7 +16,7 @@
                         <h2>Posts</h2>
                 </div>
                 <div class="scrollable">
-                        <%if(locals.user){%>
+                                <%if(locals.user){%>
                                 <form action="/posts/create" id="new-post-form" method="POST">
                                         <textarea name="content" placeholder="Type Here..." id="" cols="30" rows="3"
                                                 required="true"></textarea>
@@ -24,7 +24,7 @@
                                 </form>
                                 <%}%>
 
-                                        <div id="post-list-container">
+                                        <div id="posts-list-container">
                                                 <ul>
                                                         <%for(post of posts){%>
                                                                <%-include('_post')-%>
@@ -56,8 +56,14 @@
                         </div>
                        
                 </div>
+        
 
         
 
 </div>
 
+
+<script src="/js/home_comment.js"></script>
+<script src="/js/home_posts.js"></script>
+
+ 
