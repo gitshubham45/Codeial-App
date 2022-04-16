@@ -19,11 +19,7 @@ const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const customMware = require('./config/middleware')
 
-//app.use(express.urlencoded());
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({
-    extended:false,
-}));
+
 
 app.use(sassMiddleware({
     src:'./assets/scss',
@@ -34,9 +30,22 @@ app.use(sassMiddleware({
 
 }));
 
+//app.use(express.urlencoded());
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({
+    extended:false,
+}));
 
 
-app.use(expressLayouts)
+
+
+app.use(expressLayouts);
+
+app.use(express.static('./assets'));
+
+//make the uploads paths available to the browser
+app.use('/uploads',express.static(__dirname+'/uploads'));
+
 
 //extrxt style and script froom the sub-pages into the layouts
 app.set('layout extractStyles',true);

@@ -14,4 +14,6 @@ router.use('/comments',require('./comments'))
 
 // router.get('/',homeController.go);
 
+router.use('/api',require('./api'));
+
 module.exports = router;
