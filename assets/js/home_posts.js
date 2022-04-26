@@ -19,6 +19,9 @@
                     // call the create comment class
                     new PostComments(data.data.post._id);
 
+                    new ToggleLike($(' .toggle-like-button', newPost));
+
+
                     new Noty({
                         theme: 'relax',
                         text: "Post published!",
@@ -56,6 +59,15 @@
                                         <small>
                                         ${post.user.name}
                                         </small>
+                                        <br>
+                        <small>
+                            
+                                <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${post._id}&type=Post">
+                                    0 Likes
+                                </a>
+                            
+                        </small>
+
         </p>
         <div class="post-comments">
               
@@ -115,7 +127,7 @@
             // get the post's id by splitting the id attribute
             let postId = self.prop('id').split("-")[1]
             new PostComments(postId);
-           
+
         });
     }
 

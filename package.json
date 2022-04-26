@@ -23,6 +23,7 @@
     "express": "^4.17.3",
     "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.17.2",
+    "kue": "^0.11.6",
     "mongo-store": "^0.0.2",
     "mongoose": "^6.2.8",
     "node-sass-middleware": "^1.0.1",

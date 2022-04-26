@@ -1,3 +1,4 @@
+
 const Post = require('../models/post');
 const User = require('../models/user');
 
@@ -22,9 +23,21 @@ module.exports.home = async function (req, res) {
             .populate({
                 path: 'comments',
                 populate: {
-                    path: 'user'
+                    path: 'user likes'
                 }
+                // populate:{
+                //     path:'likes'
+                // }
         })
+        .populate('likes')
+
+        for(let post of posts){
+            console.log('hello')
+            for(let comment of post.comments){
+                console.log(comment);
+            }
+        }
+        //console.log(posts);
 
         let users = await User.find({});
 
