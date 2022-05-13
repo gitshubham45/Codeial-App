@@ -2,7 +2,10 @@
 const bodyParser=require('body-parser');
 const express=require('express');
 const env = require('./config/environment');
+const logger = require('morgan');
+
 const app=express();        
+require('./config/view-helpers')(app);
 
 const cookieParser =require('cookie-parser');
 const port=8000;
@@ -29,15 +32,19 @@ const chatSocket = require('./config/chat_sockets').chatSockets(chatServer);
 const path = require('path');
 
 chatServer.listen(5000);
-console.log('Chat Server is listening on port 5000')
-app.use(sassMiddleware({
-    src:path.join(__dirname,env.asset_path,'scss'),
-    dest:path.join(__dirname,env.asset_path,'css'),
-    debug:true,
-    outputStyle:'extended',
-    prefix:'/css'
 
-}));
+if(env.name=='development'){
+    app.use(sassMiddleware({
+        src:path.join(__dirname,env.asset_path,'scss'),
+        dest:path.join(__dirname,env.asset_path,'css'),
+        debug:true,
+        outputStyle:'extended',
+        prefix:'/css'
+    
+    }));
+}
+console.log('Chat Server is listening on port 5000')
+
 
 //app.use(express.urlencoded());
 app.use(cookieParser());
@@ -55,6 +62,8 @@ app.use(express.static(env.asset_path));
 //make the uploads paths available to the browser
 app.use('/uploads',express.static(__dirname+'/uploads'));
 
+
+app.use(logger(env.morgan.mode,env.morgan.options));
 
 //extrxt style and script froom the sub-pages into the layouts
 app.set('layout extractStyles',true);
